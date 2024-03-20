@@ -12,7 +12,7 @@ app.use(express.json({ extended: true }));
 app.use('/', routes);
 
 
-const PORT = 8443;
+const PORT = 8000;
 
 Connection();
 
