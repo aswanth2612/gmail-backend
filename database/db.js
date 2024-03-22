@@ -5,7 +5,7 @@ dotenv.config();
 
 
 const Connection = () => {
-    const DB_URI = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@ac-torj0un-shard-00-00.qy2bquu.mongodb.net:27017,ac-torj0un-shard-00-01.qy2bquu.mongodb.net:27017,ac-torj0un-shard-00-02.qy2bquu.mongodb.net:27017/?ssl=true&replicaSet=atlas-j6a91x-shard-0&authSource=admin&retryWrites=true&w=majority`;
+    const DB_URI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@gmailcluster.qy2bquu.mongodb.net/test?retryWrites=true&w=majority&appName=gmailCluster`;
     try {
         mongoose.connect(DB_URI);
         console.log(`Database connected successfully`);
