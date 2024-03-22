@@ -23,7 +23,7 @@ export const getEmails = async (request, response) => {
         } else if (request.params.type === 'starred'){
             emails = await Email.find({ starred: true, bin: false })
         } else{
-            emails = await Email.find({ type: request.params.type });
+            emails = await Email.find({});
         }
 
         return response.status(200).json(emails);

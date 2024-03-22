@@ -10,5 +10,7 @@ routes.post('/save-draft', saveSentEmails);
 routes.post('/bin', moveEmailsToBin);
 routes.post('/starred', toggleStarredEmails);
 routes.delete('/delete', deleteEmails);
+routes.get('/', getEmails);
+
 
 export default routes;
