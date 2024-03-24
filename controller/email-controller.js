@@ -24,7 +24,7 @@ export const getEmails = async (request, response) => {
         } else if (request.params.type === 'allmail') {
             emails = await Email.find({});
         } else if (request.params.type === 'inbox') {
-            emails = [];
+            emails = await Email.find({ to: "aswanthmmg@gmail.com"});;
         } else {
             emails = await Email.find({ type: request.params.type });
         }
