@@ -124,7 +124,7 @@ routes.post('/forgot-password', async (req, res) => {
             from: process.env.FROM,
             to: email,
             subject: 'Reset Password',
-            text: `http://localhost:5173/resetPassword/${token}`
+            text: `${process.env.FRONT_PATH}/resetPassword/${token}`
         };
 
         transporter.sendMail(mailOptions, function (error, info) {

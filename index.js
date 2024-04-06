@@ -13,11 +13,11 @@ app.use(express.json({
     extended: true
 }));
 app.use(cookieParser({
-    orgin: ["http://localhost:5173"],
+    orgin: [process.env.FRONT_PATH],
     credentials: true
 }))
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: process.env.FRONT_PATH,
     credentials: true
 };
 app.use(cors(corsOptions));
