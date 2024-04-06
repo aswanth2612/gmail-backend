@@ -87,7 +87,9 @@ routes.post('/login', async (req, res) => {
     })
     return res.json({
         status: true,
-        message: "login successfully"
+        message: "login successfully",
+        username: user.username,
+        email: user.email
     })
 })
 
@@ -193,7 +195,8 @@ routes.get('/verify', verifyUser, (req, res) => {
 routes.get('/logout', (req, res) => {
     res.clearCookie('token')
     return res.json({
-        status: true
+        status: true,
+        message: "Loggedout successfully."
     })
 })
 
