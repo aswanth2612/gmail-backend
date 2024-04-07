@@ -89,7 +89,8 @@ routes.post('/login', async (req, res) => {
         status: true,
         message: "login successfully",
         username: user.username,
-        email: user.email
+        email: user.email,
+        token: token
     })
 })
 
