@@ -157,7 +157,7 @@ landingPageRoutes.post('/reset-password/:token', async (req, res) => {
 
 const verifyUser = async (req, res, next) => {
     try {
-        const token = req.cookies.token;
+        const token = req.query.token;
         if (!token) {
             return res.json({
                 status: false,
