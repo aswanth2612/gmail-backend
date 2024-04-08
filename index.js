@@ -18,28 +18,14 @@ app.use(cookieParser({
     credentials: true
 }))
 
-app.use('/login', cors({
-    origin: process.env.FRONT_PATH,
-}), landingPageRoutes);
-app.use('/signup', cors({
-    origin: process.env.FRONT_PATH,
-}), landingPageRoutes);
-app.use('/forgot-password', cors({
-    origin: process.env.FRONT_PATH,
-}), landingPageRoutes);
-
 const corsOptions = {
     origin: process.env.FRONT_PATH,
     credentials: true
 };
-app.use('/logout', cors(corsOptions), landingPageRoutes);
-app.use('/verify', cors(corsOptions), landingPageRoutes);
-app.use('/', cors(corsOptions), routes);
-
-
-
-const PORT = 8000;
+app.use(cors(corsOptions));
+app.use('/emails/', routes);
+app.use('/auth', landingPageRoutes);
 
 Connection();
-
+const PORT = 8000;
 app.listen(PORT, () => {});
