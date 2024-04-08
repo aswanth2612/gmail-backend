@@ -23,7 +23,7 @@ const corsOptions = {
     credentials: true
 };
 app.use(cors(corsOptions));
-app.use('/emails/', routes);
+app.use('/', routes);
 app.use('/auth', landingPageRoutes);
 
 Connection();
