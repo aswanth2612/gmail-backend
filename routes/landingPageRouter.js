@@ -111,7 +111,7 @@ landingPageRoutes.post('/forgot-password', async (req, res) => {
             from: process.env.FROM,
             to: email,
             subject: 'Reset Password',
-            text: `${process.env.FRONT_PATH}/resetPassword/${token}`
+            text: `${process.env.FRONT_PATH}/resetPassword?token=${token}`
         };
 
         transporter.sendMail(mailOptions, function (error, info) {
@@ -130,10 +130,10 @@ landingPageRoutes.post('/forgot-password', async (req, res) => {
     } catch (err) {}
 })
 
-landingPageRoutes.post('/reset-password/:token', async (req, res) => {
+landingPageRoutes.post('/reset-password', async (req, res) => {
     const {
         token
-    } = req.params;
+    } = req.query;
     const {
         password
     } = req.body;
