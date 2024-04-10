@@ -80,10 +80,10 @@ landingPageRoutes.post('/login', async (req, res) => {
     })
 })
 
-landingPageRoutes.post('/forgot-password', async (req, res) => {
+landingPageRoutes.get('/forgot-password', async (req, res) => {
     const {
         email
-    } = req.body;
+    } = req.query;
     try {
         const user = await User.findOne({
             email
@@ -98,35 +98,11 @@ landingPageRoutes.post('/forgot-password', async (req, res) => {
         }, process.env.KEY, {
             expiresIn: '5m'
         })
-
-        var transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.USER,
-                pass: process.env.PASS
-            }
-        });
-
-        var mailOptions = {
-            from: process.env.FROM,
-            to: email,
-            subject: 'Reset Password',
-            text: `${process.env.FRONT_PATH}/resetPassword?token=${token}`
-        };
-
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                return res.json({
-                    message: "error sending email"
-                })
-            } else {
-                return res.json({
-                    status: true,
-                    message: "email sent"
-                })
-            }
-        });
-
+         return res.json({
+            status: true,
+            message: "email sent",
+            token: token
+        })
     } catch (err) {}
 })
 
@@ -172,10 +148,10 @@ const verifyUser = async (req, res, next) => {
 }
 
 landingPageRoutes.get('/verify', verifyUser, (req, res) => {
-    return res.json({
-        status: true,
-        message: "authorized"
-    })
+  return res.json({
+      status: true,
+      message: "authorized"
+  })
 
 })
 
