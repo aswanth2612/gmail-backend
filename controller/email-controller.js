@@ -116,3 +116,7 @@ export const deleteEmails = async (request, response) => {
         response.status(500).json(error.message);
     }
 }
+
+export const returnStatus = (request, response) => {
+    return response.status(200).json({"Status":"Online"});
+}
