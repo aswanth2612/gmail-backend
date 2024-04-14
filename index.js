@@ -18,10 +18,21 @@ app.use(cookieParser({
     credentials: true
 }))
 
-const corsOptions = {
-    origin: process.env.FRONT_PATH,
-    credentials: true
-};
+let allowlist = process.env.FRONT_PATH;
+const corsOptions = function (req, callback) {
+    var corsOptions;
+    if (allowlist.indexOf(req.header('Origin')) !== -1) {
+        corsOptions = {
+            origin: true
+        }
+    } else {
+        corsOptions = {
+            origin: false
+        }
+    }
+    callback(null, corsOptions)
+}
+
 app.use(cors(corsOptions));
 app.use('/', routes);
 app.use('/auth', landingPageRoutes);
