@@ -53,13 +53,17 @@ landingPageRoutes.post('/login', async (req, res) => {
     });
     if (!user) {
         return res.json({
-            message: "user not found"
+            message: "user not found",
+            error_code: 'AS001',
+            status: false,
         })
     }
     const validPassword = await bcrypt.compare(password, user.password)
     if (!validPassword) {
         return res.json({
-            message: "password is incorrect!!"
+            message: "password is incorrect!!",
+            error_code: 'AS002',
+            status: false,
         })
     }
     const token = jwt.sign({
