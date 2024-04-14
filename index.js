@@ -14,12 +14,12 @@ app.use(express.json({
     extended: true
 }));
 app.use(cookieParser({
-    origin: [process.env.FRONT_PATH],
+    origin: process.env.FRONT_PATH,
     credentials: true
 }))
 
 const corsOptions = {
-    origin: [process.env.FRONT_PATH],
+    origin: process.env.FRONT_PATH,
     credentials: true
 };
 app.use(cors(corsOptions));
