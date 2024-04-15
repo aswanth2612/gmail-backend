@@ -18,7 +18,7 @@ app.use(cookieParser({
     credentials: true
 }))
 
-let allowlist = process.env.FRONT_PATH;
+let allowlist = process.env.FRONT_PATH.split(",");
 const corsOptions = function (req, callback) {
     var corsOptions;
     if (allowlist.indexOf(req.header('Origin')) !== -1) {
